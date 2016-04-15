@@ -40,7 +40,7 @@ wget -nv -O - http://adaway.org/hosts.txt >> $temphosts
 
 
 ## Cleanup the list; remove commented lines, remove duplicates, etc
-sed -e 's/\r//' -e '/^127.0.0.1/!d' -e '/localhost/d' -e 's/0.0.0.0/127.0.0.1/' -e 's/ \+/\t/' -e 's/#.*$//' -e 's/[ \t]*$//' < $temphosts | sort -u > /etc/hosts
+sed -e '/^127.0.0.1/!d' -e '/localhost/d' -e 's/0.0.0.0/127.0.0.1/' -e 's/ \+/\t/' -e 's/#.*$//' -e 's/[ \t]*$//' < $temphosts | sort -u > /etc/hosts
 
 
 ## Append some necessary stuff to the beginning of the file
