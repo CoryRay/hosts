@@ -1,20 +1,18 @@
 #!/bin/bash
-set -o nounset
-set -o errexit
+### This script will generate an IPv4-only hosts file that blocks domains
+### responsible for advertisements, analytics, and malicious activities
+###
+### Modified from: https://github.com/fr0stycl34r/update-hosts
 
-###############################################################################
-##### This script will generate an IPv4-only hosts file that blocks domains
-##### responsible for advertisements, analytics, and malicious activities
-#####
-##### Modified from: https://github.com/fr0stycl34r/update-hosts
-###############################################################################
+set -o errexit
+set -o nounset
 
 ## We must be root in order to modify the contents of /etc
 rootcheck() {
-  if [[ $UID -ne 0 ]]; then
-    echo "Please run this script as root"
-    exit 1
-  fi
+    if [[ $UID -ne 0 ]]; then
+        echo "Please run this script as root"
+        exit 1
+    fi
 }
 rootcheck
 
